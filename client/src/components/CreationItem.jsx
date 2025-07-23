@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Markdown from 'react-markdown';
 const CreationItem = ({item}) => {
+
     const [expanded, setExpanded] = useState(false);
+
   return (
     <div onClick={()=>setExpanded(!expanded)} className='p-4 max-w-5xl text-sm bg-white border-gray-200 rounded-lg cursor-pointer'>
         <div className="flex justify-between items-center gap-4">
@@ -14,7 +16,7 @@ const CreationItem = ({item}) => {
 
         {
             expanded && (
-                <div className="">
+                <div>
                     {item.type==='image'? (
                         <div>
                             <img src={item.content} alt="" className='mt-3 w-full max-w-md' />
