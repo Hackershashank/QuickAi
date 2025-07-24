@@ -21,12 +21,12 @@ const WriteArticle = () => {
       {/* Left Col */}
       <form onSubmit={onSubmitHandler} className='w-full max-w-lg p-4 bg-white rounded-lg border border-gray-200'>
 
-        <div className="flex items-center gap-3 mb-5">
+        <div className="flex items-center gap-3">
           <Sparkles className='w-6 text-[#4A7AFF]'/>
           <h1 className='text-xl font-semibold'>Article Configuration</h1>
         </div>
 
-        <p className='wt-6 text-sm font-medium'>Article Topic</p>
+        <p className='mt-6 text-sm font-medium'>Article Topic</p>
         <input onChange={(e)=>setInput(e.target.value)}
         value={input}
         type="text" className='w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300' placeholder='The future of Artificial Intelligence is..' required/>
@@ -40,7 +40,8 @@ const WriteArticle = () => {
           ))}
         </div>
         <br />
-        <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#226BFF] to -[#65ADFF] text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-ponter'>
+
+        <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#226BFF] to-[#65ADFF] text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-ponter'>
           <Edit className='w-5'/>
           Generate article
         </button>

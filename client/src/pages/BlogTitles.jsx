@@ -38,7 +38,7 @@ const BlogTitles = () => {
 
         </div>
         <br />
-        <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#C341F6] to -[#8E37EB] text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-ponter'>
+        <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#C341F6] to-[#8E37EB] text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-ponter'>
           <Hash className='w-5'/>
           Generate titles
         </button>

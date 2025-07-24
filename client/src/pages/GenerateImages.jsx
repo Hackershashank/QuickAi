@@ -18,12 +18,12 @@ const GenerateImages = () => {
       {/* Left Col */}
       <form onSubmit={onSubmitHandler} className='w-full max-w-lg p-4 bg-white rounded-lg border border-gray-200'>
 
-        <div className="flex items-center gap-3 mb-5">
+        <div className="flex items-center gap-3">
           <Sparkles className='w-6 text-[#00AD25]'/>
           <h1 className='text-xl font-semibold'>AI Image Generator</h1>
         </div>
 
-        <p className='wt-6 text-sm font-medium'>Describe your image</p>
+        <p className='mt-6 text-sm font-medium'>Describe your image</p>
 
         <textarea onChange={(e)=>setInput(e.target.value)}
         value={input} rows={4}
@@ -55,7 +55,7 @@ const GenerateImages = () => {
 
         </div>
 
-        <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#00AD25] to -[#04FF50] text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-ponter'>
+        <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#00AD25] to-[#04FF50] text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-ponter'>
           <Image className='w-5'/>
           Generate Image
         </button>
