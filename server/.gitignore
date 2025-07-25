@@ -14,8 +14,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # dotenv environment files
-.env
 .env.* 
+.env
+
 
 # OS specific
 .DS_Store
@@ -41,5 +42,5 @@ build/
 *.sublime-project
 
 # Optional: yarn & pnpm lock (if you only use one)
-# yarn.lock
-# pnpm-lock.yaml
+yarn.lock
+pnpm-lock.yaml
