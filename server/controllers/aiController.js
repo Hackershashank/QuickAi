@@ -95,7 +95,6 @@ export const generateImage=async(req,res)=>{
         const {prompt, publish}=req.body;
         const plan=req.plan;
 
-
         if(plan!=='premium'){
             return res.json({success:false,message:'This feature is only available for premium subscriptions'})
         }
@@ -109,7 +108,6 @@ export const generateImage=async(req,res)=>{
         const base64Image=`data:image/png;base64,${Buffer.from(data,'binary').toString('base64')}`;
 
         const {secure_url} = await cloudinary.uploader.upload(base64Image);
-
         
 
         await sql` INSERT INTO creations (user_id, prompt, content, type, publish) 
@@ -126,15 +124,12 @@ export const generateImage=async(req,res)=>{
 export const removeImageBackground=async(req,res)=>{
     try {
         const {userId} = req.auth();
-        const {image} = req.file();
+        const image = req.file;
         const plan=req.plan;
-
 
         if(plan!=='premium'){
             return res.json({success:false,message:'This feature is only available for premium subscriptions'})
-        }
-
-        
+        }       
 
         const {secure_url} = await cloudinary.uploader.upload(image.path, {
             transformation: [
@@ -143,10 +138,7 @@ export const removeImageBackground=async(req,res)=>{
                     background_removal: 'remove_the_background',
                 }
             ]
-        });
-
-
-        
+        });       
 
         await sql` INSERT INTO creations (user_id, prompt, content, type) 
                     VALUES (${userId}, 'Remove background from image', ${secure_url}, 'image')`;
@@ -164,7 +156,7 @@ export const removeImageObject=async(req,res)=>{
     try {
         const {userId} = req.auth();
         const {object} = req.body;
-        const {image} = req.file();
+        const image = req.file;
         const plan = req.plan;
 
         if(plan!=='premium'){
@@ -197,7 +189,7 @@ export const removeImageObject=async(req,res)=>{
 export const resumeReview=async(req,res)=>{
     try {
         const {userId} = req.auth();
-        const resume = req.file();
+        const resume = req.file;
         const plan = req.plan;
 
         if(plan!=='premium'){
@@ -226,7 +218,7 @@ export const resumeReview=async(req,res)=>{
         const content=response.choices[0].message.content;
         await sql` INSERT INTO creations (user_id, prompt, content, type) 
                     VALUES (${userId},'Review the uploaded resume', ${content}, 'resume-review')`;            
-        res.json({success:true,content:imageUrl});
+        res.json({success:true,content:content});
     }
     catch (error) {
         console.log(error.message);
