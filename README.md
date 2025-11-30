@@ -91,7 +91,7 @@ CLIPDROP_API_KEY=
 # Cloudinary
 CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=z
+CLOUDINARY_API_SECRET=
 ```
 Create a .env file in /client:
 ```bash
@@ -116,10 +116,10 @@ Uses JWT authentication for securing API endpoints
 Environment variables stored securely (not committed to GitHub)
 
 📈 Future Enhancements
-🔹 Voice-to-text AI interaction
-🔹 AI PDF / Document Chat
-🔹 Cloud storage support
-🔹 Model fine-tuning and custom embeddings
+1. 🔹 Voice-to-text AI interaction
+2. 🔹 AI PDF / Document Chat
+3. 🔹 Cloud storage support
+4. 🔹 Model fine-tuning and custom embeddings
 
 🤝 Contributing
 Pull requests are welcome!
