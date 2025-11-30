@@ -95,8 +95,8 @@ CLOUDINARY_API_SECRET=z
 ```
 Create a .env file in /client:
 ```bash
-VITE_CLERK_PUBLISHABLE_KEY=pk_test_ZGFybGluZy1mYXduLTMxLmNsZXJrLmFjY291bnRzLmRldiQ
-VITE_BASE_URL=http://localhost:3000
+VITE_CLERK_PUBLISHABLE_KEY=
+VITE_BASE_URL=
 ```
 
 4️⃣ Start Application
