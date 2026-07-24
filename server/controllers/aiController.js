@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { Mistral } from "@mistralai/mistralai";
 import sql from "../configs/db.js";
 import { clerkClient } from "@clerk/express";
 import {v2 as cloudinary} from 'cloudinary'
@@ -6,10 +7,15 @@ import axios from "axios";
 import fs from 'fs';
 import pdf from 'pdf-parse/lib/pdf-parse.js';
 
-const AI = new OpenAI({
+const geminiAI = new OpenAI({
     apiKey: process.env.GEMINI_API_KEY,
     baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/"
 });
+
+const mistralAI = new Mistral({
+    apiKey: process.env.MISTRAL_API_KEY,
+});
+
 
 export const generateArticle=async(req,res)=>{
     try {
@@ -22,8 +28,8 @@ export const generateArticle=async(req,res)=>{
             return res.json({success:false,message:'Limit reached. Upgrade to continue.'})
         }
 
-        const response = await AI.chat.completions.create({
-            model: "gemini-2.0-flash",
+        const response = await mistralAI.chat.complete({
+            model: "mistral-small-latest",
             messages: [{
                     role: "user",
                     content: prompt
@@ -61,15 +67,15 @@ export const generateCode=async(req,res)=>{
             return res.json({success:false,message:'Limit reached. Upgrade to continue.'})
         }
 
-        const response = await AI.chat.completions.create({
-            model: "gemini-2.0-flash",
+        const response = await mistralAI.chat.complete({
+            model: "mistral-small-latest",
             messages: [{
                     role: "user",
                     content: prompt
                 },                
             ],
             temperature:0.7,
-            max_tokens:2000,
+            max_tokens:1000,
         });
         const content=response.choices[0].message.content;
         await sql` INSERT INTO creations (user_id, prompt, content, type) 
@@ -100,15 +106,15 @@ export const generateBlogTitle=async(req,res)=>{
             return res.json({success:false,message:'Limit reached. Upgrade to continue.'})
         }
 
-        const response = await AI.chat.completions.create({
-            model: "gemini-2.0-flash",
+        const response = await mistralAI.chat.complete({
+            model: "mistral-small-latest",
             messages: [{
                     role: "user",
                     content: prompt
                 },                
             ],
             temperature:0.7,
-            max_tokens:1000,
+            max_tokens:100,
         });
         const content=response.choices[0].message.content;
         await sql` INSERT INTO creations (user_id, prompt, content, type) 
@@ -244,7 +250,7 @@ export const resumeReview=async(req,res)=>{
 
         const prompt=`Review the following resume and provide constructive feedback on its strengths, weakness, and ares for impreovement. Resume content:\n\n${pdfData.text}`;
 
-        const response = await AI.chat.completions.create({
+        const response = await geminigeminiAI.chat.completions.create({
             model: "gemini-2.0-flash",
             messages: [{
                     role: "user",

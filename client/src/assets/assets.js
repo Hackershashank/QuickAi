@@ -5,7 +5,7 @@ import star_icon from "./star_icon.svg";
 import star_dull_icon from "./star_dull_icon.svg";
 import profile_img_1 from "./profile_img_1.png";
 import arrow_icon from "./arrow_icon.svg";
-import { SquarePen, Hash, Image, Eraser, Scissors, FileText } from 'lucide-react'
+import { SquarePen, Hash, Image, Eraser, FileText, CodeXml } from 'lucide-react'
 import ai_gen_img_1 from "./ai_gen_img_1.png";
 import ai_gen_img_2 from "./ai_gen_img_2.png";
 import ai_gen_img_3 from "./ai_gen_img_3.png";
@@ -50,11 +50,11 @@ export const AiToolsData = [
         path: '/ai/remove-background'
     },
     {
-        title: 'Object Removal',
-        description: 'Remove unwanted objects from your images seamlessly with our AI object removal tool.',
-        Icon: Scissors,
+        title: 'Code Generator',
+        description: 'Generate code just by writing the name of the question present on Leetcode',
+        Icon: CodeXml,
         bg: { from: '#5C6AF1', to: '#427DF5' },
-        path: '/ai/remove-object'
+        path: '/ai/generate-code'
     },
     {
         title: 'Resume Reviewer',
